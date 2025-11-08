@@ -1,0 +1,1 @@
+aliyun ecs DescribeInstances --output cols=InstanceId,InstanceName,CloudAssistantStatus,PublicIpAddress.IpAddress,VpcAttributes.PrivateIpAddress.IpAddress,InstanceType,Status rows="Instances.Instance[]"
