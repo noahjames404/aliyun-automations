@@ -50,10 +50,10 @@ echo "Waiting for snapshot to complete..."
 max_attempts=180
 attempt=0
 while [ $attempt -lt $max_attempts ]; do
-  snapshot_status=$(aliyun ecs DescribeSnapshots --SnapshotIds "['$snapshot_id']" | jq -r .Snapshots.Snapshot[].Status)
+  snapshot_status=$(aliyun ecs DescribeSnapshots --SnapshotIds "['$snapshot_id']" | jq -r .Snapshots.Snapshot[].Progress)
 
-  if [ "$snapshot_status" == "accomplished" ]; then
-    echo "Snapshot completed successfully!"
+  if [ "$snapshot_status" == "100%" ]; then
+    echo "Snapshot completed successfully! - final state $snapshot_status"
     break
   fi
   
@@ -62,7 +62,7 @@ while [ $attempt -lt $max_attempts ]; do
   ((attempt++))
 done
 
-if [ "$snapshot_status" != "accomplished" ]; then
+if [ "$snapshot_status" != "100%" ]; then
   echo "Error: Snapshot creation timed out or failed with status: $snapshot_status"
   exit 1
 fi
