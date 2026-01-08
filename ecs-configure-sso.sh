@@ -1,0 +1,1 @@
+aliyun configure --profile SSOProfile --mode CloudSSO

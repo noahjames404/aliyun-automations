@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# https://www.alibabacloud.com/help/en/ecs/user-guide/register-a-public-key-and-connect-to-an-instance-with-the-key-by-using-ali-instance-cli
 # Check if instance ID is provided
 if [ -z "$1" ]; then
   echo "Usage: $0 <instance-id>"
